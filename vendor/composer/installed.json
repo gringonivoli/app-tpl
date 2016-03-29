@@ -1,0 +1,88 @@
+[
+    {
+        "name": "firebase/php-jwt",
+        "version": "v3.0.0",
+        "version_normalized": "3.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/firebase/php-jwt.git",
+            "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/firebase/php-jwt/zipball/fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+            "reference": "fa8a06e96526eb7c0eeaa47e4f39be59d21f16e1",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2015-07-22 18:31:08",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Firebase\\JWT\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Neuman Vong",
+                "email": "neuman+pear@twilio.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Anant Narayanan",
+                "email": "anant@php.net",
+                "role": "Developer"
+            }
+        ],
+        "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+        "homepage": "https://github.com/firebase/php-jwt"
+    },
+    {
+        "name": "vrana/notorm",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/vrana/notorm.git",
+            "reference": "e49d5d2f1bfe440dc82b61f46172635dfcb6f6dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/vrana/notorm/zipball/e49d5d2f1bfe440dc82b61f46172635dfcb6f6dd",
+            "reference": "e49d5d2f1bfe440dc82b61f46172635dfcb6f6dd",
+            "shasum": ""
+        },
+        "time": "2014-10-30 16:55:08",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "files": [
+                "NotORM.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0",
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "Jakub Vrána",
+                "homepage": "http://www.vrana.cz/"
+            }
+        ],
+        "description": "NotORM is a PHP library for simple working with data in the database.",
+        "homepage": "http://www.notorm.com/",
+        "keywords": [
+            "database",
+            "dbal"
+        ]
+    }
+]

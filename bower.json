@@ -1,0 +1,40 @@
+{
+  "name": "app-tpl",
+  "authors": [
+    "Maxi Nivoli <m_nivoli@hotmail.com>"
+  ],
+  "description": "tpl",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-animate": "^1.5.3",
+    "angular-messages": "^1.5.3",
+    "angular-sanitize": "^1.5.3",
+    "ui-select": "angular-ui-select#^0.16.1",
+    "angular-bootstrap": "^1.2.5",
+    "angular-ui-router": "^0.2.18",
+    "angular-jwt": "^0.0.9",
+    "angular-loading-bar": "^0.9.0",
+    "a0-angular-storage": "^0.0.14",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.0",
+    "font-awesome": "fontawesome#^4.5.0",
+    "toastr": "^2.1.2",
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.12.0",
+    "angular-resource": "^1.5.3",
+    "angular-cookies": "^1.5.3"
+  }
+}
