@@ -12,18 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <base href="/app-tpl/">
 
-    <!-- build:css styles/lib.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- inject-vendor:css -->
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />   
+    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" />   
     <link rel="stylesheet" href="./bower_components/toastr/toastr.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-
-    <!-- build:css styles/app.css -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="">
     <!-- endinject -->
-    <!-- endbuild -->
+
+    <!-- inject:css -->
+    
+    <!-- endinject -->
 </head>
 <body>
     <button type="button" ui-sref="test">dddd</button>
@@ -31,8 +28,7 @@
         
     </div>
 
-    <!-- build:js js/lib.js -->
-    <!-- bower:js -->
+     <!-- inject-vendor:js -->
     <script src="./bower_components/jquery/dist/jquery.js"></script>
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-jwt/dist/angular-jwt.js"></script>
@@ -49,37 +45,47 @@
     <script src="./bower_components/ui-select/dist/select.js"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="./bower_components/angularUtils-pagination/dirPagination.js"></script>    
-    <!-- endbower -->
-    <!-- endbuild -->
+    <!-- endinject -->
 
-    <!-- build:js js/app.js -->
     <!-- inject:js -->
-    <script src="./src/client/app/app.module.js"></script>  
+    <!-- Bootstrapping -->
+    <script src="./src/client/app/app.module.js"></script>
+    
+    <!-- Reusable Blocks/Modules -->     
     <script src="./src/client/app/blocks/exception/exception.module.js"></script>
     <script src="./src/client/app/blocks/logger/logger.module.js"></script>
     <script src="./src/client/app/blocks/router/router.module.js"></script>
     <script src="./src/client/app/blocks/auth/auth.module.js"></script>
     <script src="./src/client/app/blocks/history/history.module.js"></script>
-    <script src="./src/client/app/core/core.module.js"></script>    
     <script src="./src/client/app/blocks/exception/exception-handler.provider.js"></script>
     <script src="./src/client/app/blocks/exception/exception.service.js"></script>
     <script src="./src/client/app/blocks/logger/logger.service.js"></script>
     <script src="./src/client/app/blocks/router/router-helper.provider.js"></script>
-    <script src="./src/client/app/core/config.js"></script>
-    <script src="./src/client/app/core/constants.js"></script>
     <script src="./src/client/app/blocks/auth/config.js"></script>
-    <script src="./src/client/app/blocks/auth/auth.service.js"></script>
+    <script src="./src/client/app/blocks/auth/auth.provider.js"></script>
     <script src="./src/client/app/blocks/history/historyStorage.service.js"></script>
     <script src="./src/client/app/blocks/history/history.service.js"></script>
     <script src="./src/client/app/blocks/history/navigationHelper.service.js"></script>
     
+    <!-- core module -->
+    <script src="./src/client/app/core/core.module.js"></script>       
+    <script src="./src/client/app/core/config.js"></script>
+    <script src="./src/client/app/core/constants.js"></script>    
+    
+    <!-- layout -->
+    
+    <!--widgets-->
+    
+    <!--test login-->
+    <script src="./src/client/app/login/login.module.js"></script>
+    <script src="./src/client/app/login/login.route.js"></script>
+    <script src="./src/client/app/login/login.controller.js"></script>
+    <!-- endinject -->
+    
+    <!--test module-->
     <script src="./src/client/app/test/test.module.js"></script>
     <script src="./src/client/app/test/test.route.js"></script>
     <script src="./src/client/app/test/test.controller.js"></script>
-    <!-- endinject -->
-
-    <!-- inject:templates:js -->
-    <!-- endinject -->
-    <!-- endbuild -->
+    <!-- endinject -->    
 </body>
 </html>

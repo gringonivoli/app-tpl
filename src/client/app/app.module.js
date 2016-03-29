@@ -3,6 +3,7 @@
 
     angular.module('app', [
         'app.core',
-        'app.test'
+        'app.test',
+        'app.login'
     ]);
 })();

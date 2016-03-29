@@ -14,21 +14,29 @@
 
     var config = {
         appErrorPrefix: '[App Error] ',
-        appTitle: 'App'
+        appTitle: 'App',
+        appNoAuthState: 'login',
+        appNoAuthMsg: 'Ups! Parece que no puedes acceder a esta ruta.',
+        appNoAuthTitle: 'Ruta inaccesible'
     };
 
     core.value('config', config);
 
     core.config(configure);
 
-    configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
+    configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider', 'authProvider'];
     /* @ngInject */
-    function configure($logProvider, routerHelperProvider, exceptionHandlerProvider) {
+    function configure($logProvider, routerHelperProvider, exceptionHandlerProvider, authProvider) {
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
         }
         exceptionHandlerProvider.configure(config.appErrorPrefix);
         routerHelperProvider.configure({docTitle: config.appTitle + ': '});
+        authProvider.configure({
+            stateToRedirect: config.appNoAuthState,
+            warningMsg: config.appNoAuthMsg,
+            warningTitle: config.appNoAuthTitle
+        });
     }
 
 })();
