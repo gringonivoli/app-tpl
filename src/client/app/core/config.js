@@ -15,7 +15,7 @@
     var config = {
         appErrorPrefix: '[App Error] ',
         appTitle: 'App',
-        appUrlNoAuth: 'login',
+        appStateNoAuth: 'login',
         appNoAuthMsg: 'Ups! Parece que no puedes acceder a esta ruta.',
         appNoAuthTitle: 'Ruta inaccesible'
     };
@@ -33,7 +33,7 @@
         exceptionHandlerProvider.configure(config.appErrorPrefix);
         routerHelperProvider.configure({docTitle: config.appTitle + ': '});
         authProvider.configure({
-            urlToRedirect: config.appUrlNoAuth,
+            stateToRedirect: config.appStateNoAuth,
             warningMsg: config.appNoAuthMsg,
             warningTitle: config.appNoAuthTitle
         });

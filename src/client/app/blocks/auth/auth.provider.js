@@ -9,7 +9,7 @@
     function authProvider() {
 
         var config = {
-            urlToRedirect: '',
+            stateToRedirect: '',
             warningMsg: '',
             warningTitle: ''            
         };
@@ -20,8 +20,8 @@
 
         this.$get = Auth;
 
-        Auth.$inject = ['$http', 'store', '$rootScope', '$location', 'logger'];
-        function Auth($http, store, $rootScope, $location, logger) {
+        Auth.$inject = ['$http', 'store', '$rootScope', '$state', 'logger'];
+        function Auth($http, store, $rootScope, $state, logger) {
 
             var service = {
                 auth: auth,
@@ -103,7 +103,7 @@
                         if (toState.access && toState.access.requiredLogin && !getAuth()) {
                             event.preventDefault();
                             logger.warning(config.warningMsg, config.warningTitle);                            
-                            $location.path(config.urlToRedirect);
+                            $state.go(config.stateToRedirect);
                         }
                     }
                 );
