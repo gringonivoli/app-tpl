@@ -93,7 +93,7 @@
         /**
          * init
          *
-         * Inicializa el historial vacio.
+         * Inicializa el historial.
          */
         function init(){
             setStore();
