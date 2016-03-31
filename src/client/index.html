@@ -23,7 +23,8 @@
     <!-- endinject -->
 </head>
 <body>
-    <button type="button" ui-sref="test">dddd</button>
+    <button type="button" class="btn btn-primary" ui-sref="test">test</button>
+    <button type="button" class="btn btn-primary" ui-sref="param({id: 1})">param</button>
     <div ui-view>
         
     </div>
@@ -86,6 +87,12 @@
     <script src="./src/client/app/test/test.module.js"></script>
     <script src="./src/client/app/test/test.route.js"></script>
     <script src="./src/client/app/test/test.controller.js"></script>
+    <!-- endinject -->
+    
+    <!--param module-->
+    <script src="./src/client/app/param/param.module.js"></script>
+    <script src="./src/client/app/param/param.route.js"></script>
+    <script src="./src/client/app/param/param.controller.js"></script>
     <!-- endinject -->    
 </body>
 </html>

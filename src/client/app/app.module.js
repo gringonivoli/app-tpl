@@ -4,6 +4,7 @@
     angular.module('app', [
         'app.core',
         'app.test',
-        'app.login'
+        'app.login',
+        'app.param'
     ]);
 })();

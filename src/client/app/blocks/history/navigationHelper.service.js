@@ -5,8 +5,8 @@
         .module('blocks.history')
         .factory('navigationHelper', navigationHelper);
 
-    navigationHelper.$inject = ['$location', 'history'];
-    function navigationHelper($location, history) {
+    navigationHelper.$inject = ['$state', 'history'];
+    function navigationHelper($state, history) {
         var service = {
             openChild: openChild,
             hasBack: hasBack,
@@ -27,9 +27,9 @@
          *
          * @param path {string}
          */
-        function openChild(path){
+        function openChild(name, params){            
             history.savePath(true);
-            $location.url(path);
+            $state.go(name, params);
         }
 
         /**
@@ -58,7 +58,8 @@
          */
         function back(){
             if(history.hasHistory()){
-                $location.url(history.getLast());
+                var state = history.getLast();
+                $state.go(state.name, state.params);
             }
         }
 

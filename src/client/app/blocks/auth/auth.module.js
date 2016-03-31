@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('blocks.auth', [
+        'ui.router',
         'angular-storage',
         'blocks.logger',
         'angular-jwt'

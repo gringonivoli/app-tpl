@@ -5,8 +5,8 @@
         .module('blocks.history')
         .factory('history', history);
 
-    history.$inject = ['store', 'historyStorage', '$rootScope'];
-    function history(store, historyStorage, $rootScope) {
+    history.$inject = ['store', 'historyStorage', '$rootScope', '$state'];
+    function history(store, historyStorage, $rootScope, $state) {
         
         var id = 'history';
         var save = false;
@@ -35,16 +35,12 @@
          *
          * @param parentPath
          */
-        function addToHistory(parentPath){
+        function addToHistory(fullState){
             var history = null;
             if(save){
-                if(parentPath.$$route.keys.length){
-                    parentPath = setRouteParams(parentPath);
-                }else{
-                    parentPath = parentPath.$$route.originalPath;
-                }
+                var parentPath = $state.href(fullState.name, fullState.params);
                 history = store.get(id);
-                history.push(parentPath);
+                history.push(fullState);
                 store.set(id, history);
             }
             hasHistoryBroken();
@@ -72,9 +68,9 @@
          * los datos de formularios almacenados.
          *
          */
-        function cleanUp(){
-            init();
-            modalStorageService.init();
+        function cleanUp(){            
+            setStore();
+            historyStorage.init();
         }
 
         /**
@@ -106,7 +102,13 @@
         
         function handleHistory(){
             $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-                addToHistory((fromState) ? fromState : false);
+                if(fromState){
+                    var fullState = {
+                        name: fromState.name,
+                        params: fromParams
+                    };
+                    addToHistory(fullState);
+                }                
             });
         }
 
@@ -138,29 +140,6 @@
          */
         function hasHistory(){
             return (store.get(id).length !== 0);
-        }
-
-        /**
-         * setRouteParams
-         *
-         * En caso de que la ruta tenga parámetros
-         * se crea la misma con los valores de
-         * los parámetros y se retorna.
-         *
-         * @param route
-         * @returns {string}
-         */
-        function setRouteParams(route){
-            var l = route.$$route.keys.length;
-            var regex = new RegExp(route.$$route.regexp);
-            var path = route.$$route.originalPath + '';
-            var resultRegex = regex.exec(path);
-            for(var i = 1; i <= l; i++){
-                var aux = resultRegex[i] + '';
-                var param = route.pathParams[aux.replace(':', '')];
-                path = path.replace(aux, param);
-            }
-            return path;
-        }
+        }        
     }
 })();

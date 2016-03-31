@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('blocks.history', [
+        'ui.router',        
         'angular-storage'
     ])
     .run(run);
