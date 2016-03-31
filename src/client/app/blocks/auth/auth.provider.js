@@ -11,7 +11,8 @@
         var config = {
             stateToRedirect: '',
             warningMsg: '',
-            warningTitle: ''            
+            warningTitle: '',
+            urlAuth: 'api/auth'            
         };
 
         this.configure = function(cfg) {
@@ -51,7 +52,7 @@
             function auth(data, successCallback, errorCallback) {
                 $http({
                     method: 'POST',
-                    url: 'api/auth',
+                    url: config.urlAuth,
                     skipAuthorization: true,
                     data: data//{username: user, pass: pass}
                 }).then(function(response) {
