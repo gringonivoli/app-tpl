@@ -1,9 +1,7 @@
-/vendor/Misc-master
 /vendor/autoload.php
 /.idea
 /.vscode
 /vendor/fpdf181
 /vendor/vrana
-/vendor/siervo
 /vendor/firebase
 /bower_components

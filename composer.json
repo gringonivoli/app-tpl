@@ -1,0 +1,6 @@
+{
+    "require": {
+        "firebase/php-jwt": "^3.0",
+        "vrana/notorm": "dev-master"
+    }
+}
