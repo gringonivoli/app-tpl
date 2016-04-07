@@ -31,26 +31,39 @@
             $logProvider.debugEnabled(true);
         }
 
-        exceptionHandlerProvider.configure(config.appErrorPrefix);
+        configureExceptionHandler();
+        configureAuth();
+        configureRouterHelper();
 
-        var resolveAlways = {
-            ready: ready
-        };
-        ready.$inject = ['datacontext'];
-        function ready(datacontext) {
-            return datacontext.ready();
+        ///////////////////
+
+        function configureExceptionHandler() {
+            exceptionHandlerProvider.configure(config.appErrorPrefix);
         }
 
-        routerHelperProvider.configure({
-            docTitle: config.appTitle + ': ',
-            resolveAlways: resolveAlways
-        });
+        function configureAuth() {
+            authProvider.configure({
+                stateToRedirect: config.appStateNoAuth,
+                warningMsg: config.appNoAuthMsg,
+                warningTitle: config.appNoAuthTitle
+            });
+        }
 
-        authProvider.configure({
-            stateToRedirect: config.appStateNoAuth,
-            warningMsg: config.appNoAuthMsg,
-            warningTitle: config.appNoAuthTitle
-        });
+        function configureRouterHelper() {
+            var resolveAlways = {
+                ready: ready
+            };
+
+            ready.$inject = ['datacontext'];
+            function ready(datacontext) {
+                return datacontext.ready();
+            }
+
+            routerHelperProvider.configure({
+                docTitle: config.appTitle + ': ',
+                resolveAlways: resolveAlways
+            });
+        }
     }
 
 })();
