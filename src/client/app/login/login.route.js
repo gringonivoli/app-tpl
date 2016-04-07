@@ -20,7 +20,7 @@
                     templateUrl: 'src/client/app/login/login.html',
                     controller: 'LoginController',
                     controllerAs: 'vm',
-                    title: 'Login'   
+                    title: 'Login'
                 }
             }
         ];

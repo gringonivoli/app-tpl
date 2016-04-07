@@ -5,7 +5,7 @@
         .module('blocks.exception')
         .factory('exception', exception);
 
-    exception.$inject = ['$q', '$logger']
+    exception.$inject = ['$q', 'logger'];
     function exception($q, logger) {
         var service = {
             catcher: catcher

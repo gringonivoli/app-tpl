@@ -30,8 +30,22 @@
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
         }
+
         exceptionHandlerProvider.configure(config.appErrorPrefix);
-        routerHelperProvider.configure({docTitle: config.appTitle + ': '});
+
+        var resolveAlways = {
+            ready: ready
+        };
+        ready.$inject = ['datacontext'];
+        function ready(datacontext) {
+            return datacontext.ready();
+        }
+
+        routerHelperProvider.configure({
+            docTitle: config.appTitle + ': ',
+            resolveAlways: resolveAlways
+        });
+
         authProvider.configure({
             stateToRedirect: config.appStateNoAuth,
             warningMsg: config.appNoAuthMsg,
