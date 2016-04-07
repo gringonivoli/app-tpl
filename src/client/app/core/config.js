@@ -55,6 +55,7 @@
             };
 
             ready.$inject = ['datacontext'];
+            /* @ngInject */
             function ready(datacontext) {
                 return datacontext.ready();
             }
