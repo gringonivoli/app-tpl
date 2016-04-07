@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
+
 <head>
     <style>
         /* This helps the ng-show/ng-hide animations start at the right place. */
         /* Since Angular has this but needs to load, this gives us the class early. */
-        .ng-hide { display: none!important; }
+        
+        .ng-hide {
+            display: none!important;
+        }
     </style>
     <title ng-bind="title">helloWorld</title>
     <meta charset="utf-8" />
@@ -12,91 +16,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
     <base href="/app-tpl/">
 
-    <!-- inject-vendor:css -->
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />   
-    <link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.min.css" />   
+    <!-- build:css styles/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="./bower_components/ui-select/dist/select.css" />
+    <link rel="stylesheet" href="./bower_components/angular-loading-bar/build/loading-bar.css" />
     <link rel="stylesheet" href="./bower_components/toastr/toastr.css" />
-    <!-- endinject -->
+    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
 
+    <!-- build:css styles/app.css -->
     <!-- inject:css -->
-    
+    <link rel="stylesheet" href="./.tmp/styles.css">
     <!-- endinject -->
+    <!-- endbuild -->
 </head>
+
 <body>
     <button type="button" class="btn btn-primary" ui-sref="test">test</button>
     <button type="button" class="btn btn-primary" ui-sref="param({id: 1})">param</button>
     <div ui-view>
-        
     </div>
 
-     <!-- inject-vendor:js -->
-    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <!--build:js js/lib.js-->
+    <!-- bower:js -->
     <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src="./bower_components/a0-angular-storage/dist/angular-storage.js"></script>
-    <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>    
-    <script src="./bower_components/moment/moment.js"></script>
-    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="./bower_components/toastr/toastr.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
-    <script src="./bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="./bower_components/angular-messages/angular-messages.js"></script>
-    <script src="./bower_components/angular-resource/angular-resource.js"></script>
-    <script src="./bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="./bower_components/ui-select/dist/select.js"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="./bower_components/angularUtils-pagination/dirPagination.js"></script>    
-    <!-- endinject -->
+    <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="./bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="./bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="./bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+    <script src="./bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/toastr/toastr.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="./bower_components/moment/moment.js"></script>
+    <script src="./bower_components/angular-resource/angular-resource.js"></script>
+    <script src="./bower_components/angular-cookies/angular-cookies.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
+    <!-- build:js js/app.js -->
     <!-- inject:js -->
-    <!-- Bootstrapping -->
     <script src="./src/client/app/app.module.js"></script>
-    
-    <!-- Reusable Blocks/Modules -->     
+    <script src="./src/client/app/core/core.module.js"></script>
+    <script src="./src/client/app/data/data.module.js"></script>
+    <script src="./src/client/app/login/login.module.js"></script>
+    <script src="./src/client/app/param/param.module.js"></script>
+    <script src="./src/client/app/test/test.module.js"></script>
+    <script src="./src/client/app/blocks/auth/auth.module.js"></script>
     <script src="./src/client/app/blocks/exception/exception.module.js"></script>
+    <script src="./src/client/app/blocks/history/history.module.js"></script>
     <script src="./src/client/app/blocks/logger/logger.module.js"></script>
     <script src="./src/client/app/blocks/router/router.module.js"></script>
-    <script src="./src/client/app/blocks/auth/auth.module.js"></script>
-    <script src="./src/client/app/blocks/history/history.module.js"></script>
+    <script src="./src/client/app/core/common.js"></script>
+    <script src="./src/client/app/core/config.js"></script>
+    <script src="./src/client/app/core/constants.js"></script>
+    <script src="./src/client/app/data/datacontext.js"></script>
+    <script src="./src/client/app/login/login.controller.js"></script>
+    <script src="./src/client/app/login/login.route.js"></script>
+    <script src="./src/client/app/param/param.controller.js"></script>
+    <script src="./src/client/app/param/param.route.js"></script>
+    <script src="./src/client/app/test/test.controller.js"></script>
+    <script src="./src/client/app/test/test.route.js"></script>
+    <script src="./src/client/app/blocks/auth/auth.provider.js"></script>
+    <script src="./src/client/app/blocks/auth/config.js"></script>
     <script src="./src/client/app/blocks/exception/exception-handler.provider.js"></script>
     <script src="./src/client/app/blocks/exception/exception.service.js"></script>
+    <script src="./src/client/app/blocks/history/history.service.js"></script>
+    <script src="./src/client/app/blocks/history/historyStorage.service.js"></script>
+    <script src="./src/client/app/blocks/history/navigationHelper.service.js"></script>
     <script src="./src/client/app/blocks/logger/logger.service.js"></script>
     <script src="./src/client/app/blocks/router/router-helper.provider.js"></script>
-    <script src="./src/client/app/blocks/auth/config.js"></script>
-    <script src="./src/client/app/blocks/auth/auth.provider.js"></script>
-    <script src="./src/client/app/blocks/history/historyStorage.service.js"></script>
-    <script src="./src/client/app/blocks/history/history.service.js"></script>
-    <script src="./src/client/app/blocks/history/navigationHelper.service.js"></script>
-    
-    <!-- core module -->
-    <script src="./src/client/app/core/core.module.js"></script>       
-    <script src="./src/client/app/core/config.js"></script>
-    <script src="./src/client/app/core/constants.js"></script>    
-    <script src="./src/client/app/core/common.js"></script>
-    <!-- layout -->
-    
-    <!--widgets-->
-    
-    <!-- data -->
-    <script src="./src/client/app/data/data.module.js"></script>
-    <script src="./src/client/app/data/datacontext.js"></script>
-    
-    <!--test login-->
-    <script src="./src/client/app/login/login.module.js"></script>
-    <script src="./src/client/app/login/login.route.js"></script>
-    <script src="./src/client/app/login/login.controller.js"></script>
     <!-- endinject -->
-    
-    <!--test module-->
-    <script src="./src/client/app/test/test.module.js"></script>
-    <script src="./src/client/app/test/test.route.js"></script>
-    <script src="./src/client/app/test/test.controller.js"></script>
+
+    <!-- inject:templates.js -->
     <!-- endinject -->
-    
-    <!--param module-->
-    <script src="./src/client/app/param/param.module.js"></script>
-    <script src="./src/client/app/param/param.route.js"></script>
-    <script src="./src/client/app/param/param.controller.js"></script>
-    <!-- endinject -->    
+
+    <!-- endbuild -->
 </body>
+
 </html>

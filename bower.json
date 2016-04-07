@@ -1,21 +1,16 @@
 {
   "name": "app-tpl",
+  "version": "0.1.0",
+  "description": "Estructura básica para la creación de aplicaciones web basadas en AngularJS.",
   "authors": [
     "Maxi Nivoli <m_nivoli@hotmail.com>"
   ],
-  "description": "tpl",
-  "main": "",
-  "moduleType": [
-    "globals"
-  ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/gringonivoli/app-tpl",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "dependencies": {
     "angular": "^1.5.3",
@@ -36,5 +31,14 @@
     "moment": "^2.12.0",
     "angular-resource": "^1.5.3",
     "angular-cookies": "^1.5.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    }
   }
 }

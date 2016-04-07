@@ -9,12 +9,17 @@
 use Siervo\Request;
 use Siervo\Response;
 
+$dev = 'src/client/';
+$pro = 'build/';
+
+$path = $pro; 
+
 $si = \Siervo\Siervo::getInstance();
 
-$si->get("/", function(Request $req, Response $res){
-    $res->sendFile('src/client/index.html');
+$si->get("/", function(Request $req, Response $res) use ($path){
+    $res->sendFile($path.'index.html');
 });
 
-$si->get("/test", function(Request $req, Response $res){
-    $res->sendFile('src/client/index.html');
+$si->get("/test", function(Request $req, Response $res) use ($path){
+    $res->sendFile($path.'index.html');
 });

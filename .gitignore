@@ -5,3 +5,6 @@
 /vendor/vrana
 /vendor/firebase
 /bower_components
+/node_modules
+/.tmp
+/build
