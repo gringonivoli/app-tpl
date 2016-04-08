@@ -13,6 +13,8 @@
     "bower_components"
   ],
   "dependencies": {
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6",
     "angular": "^1.5.3",
     "angular-animate": "^1.5.3",
     "angular-messages": "^1.5.3",
@@ -25,9 +27,7 @@
     "a0-angular-storage": "^0.0.14",
     "angularUtils-pagination": "angular-utils-pagination#^0.11.0",
     "font-awesome": "fontawesome#^4.5.0",
-    "toastr": "^2.1.2",
-    "jquery": "^2.2.2",
-    "bootstrap": "^3.3.6",
+    "toastr": "^2.1.2",    
     "moment": "^2.12.0",
     "angular-resource": "^1.5.3",
     "angular-cookies": "^1.5.3"
@@ -39,6 +39,12 @@
         "dist/css/bootstrap.css",
         "less/bootstrap.less"
       ]
+    },
+    "font-awesome": {
+        "main": [
+            "css/font-awesome.css",
+            "less/font-awesome.less"
+        ]
     }
   }
 }
