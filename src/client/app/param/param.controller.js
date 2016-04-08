@@ -1,5 +1,5 @@
 (function() {
-'use strict';
+    'use strict';
 
     angular
         .module('app.param')
@@ -7,16 +7,15 @@
 
     ParamController.$inject = ['$stateParams', 'historyStorage', 'navigationHelper'];
     function ParamController($stateParams, historyStorage, navigationHelper) {
-        var vm = this;       
+        var vm = this;
         vm.id = $stateParams.id;
-        var historyStorage = historyStorage;
         vm.isModal = navigationHelper.isModal();
         vm.cancel = navigationHelper.back;
 
-        vm.openChild = function (name, params){
+        vm.openChild = function (name, params) {
             historyStorage.set('param', 'jojojo');
             navigationHelper.openChild(name, params);
-        }
+        };
 
         activate();
 

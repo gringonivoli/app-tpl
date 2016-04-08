@@ -11,7 +11,7 @@
     function logger($log, toastr) {
         var service = {
             showToasts: true,
-            
+
             error   : error,
             info    : info,
             success : success,

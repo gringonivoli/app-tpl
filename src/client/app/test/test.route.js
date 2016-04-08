@@ -23,7 +23,7 @@
                     title: 'Test',
                     access: {
                         requiredLogin: true
-                    }                    
+                    }
                 }
             }
         ];

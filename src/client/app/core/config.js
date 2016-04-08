@@ -24,7 +24,8 @@
 
     core.config(configure);
 
-    configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider', 'authProvider'];
+    configure.$inject = ['$logProvider', 'routerHelperProvider',
+    'exceptionHandlerProvider', 'authProvider'];
     /* @ngInject */
     function configure($logProvider, routerHelperProvider, exceptionHandlerProvider, authProvider) {
         if ($logProvider.debugEnabled) {

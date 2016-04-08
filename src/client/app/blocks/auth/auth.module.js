@@ -8,8 +8,8 @@
         'angular-jwt'
     ])
     .run(run);
-    
+
     // Just init the service.
-    run.$inject = ['auth']
+    run.$inject = ['auth'];
     function run(auth) {}
 })();

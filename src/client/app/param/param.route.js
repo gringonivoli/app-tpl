@@ -20,7 +20,7 @@
                     templateUrl: 'src/client/app/param/param.html',
                     controller: 'ParamController',
                     controllerAs: 'vm',
-                    title: 'Param'       
+                    title: 'Param'
                 }
             }
         ];

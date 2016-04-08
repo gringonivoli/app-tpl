@@ -92,10 +92,10 @@ gulp.task('vet', function() {
 gulp.task('fix-jscs', function () {
     log('Fixing JavaScript Code Style');
     return gulp
-        .src(config.alljs) // esto tal vez se deba modificar.
+        .src(config.alljs)
         .pipe($_.jscs({fix: true}))
         .pipe($_.jscs.reporter())
-        .pipe($_.jscs.reporter('fail'))
+        //.pipe($_.jscs.reporter('fail'))
         .pipe(gulp.dest(config.src));
 });
 

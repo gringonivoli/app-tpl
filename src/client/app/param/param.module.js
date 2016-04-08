@@ -1,7 +1,5 @@
 (function() {
     'use strict';
 
-    angular.module('app.param', [
-        
-    ]);
+    angular.module('app.param', []);
 })();

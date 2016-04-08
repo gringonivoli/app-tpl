@@ -13,11 +13,11 @@
             isModal: isModal,
             back: back
         };
-        
+
         return service;
 
         ////////////////
-        
+
         /**
          * openChild
          *
@@ -25,9 +25,10 @@
          * tomandola como pantalla hija de
          * su predecesora, estilo modal.
          *
-         * @param path {string}
+         * @param {String} name
+         * @param {Object} params
          */
-        function openChild(name, params){            
+        function openChild(name, params) {
             history.savePath(true);
             $state.go(name, params);
         }
@@ -41,10 +42,11 @@
          * ejecuta la funcion que se le pasa
          * por parametro
          *
-         * @param func {function}
+         * @param {function} func
          */
-        function hasBack(func){
-            history.hasHistory() ? $location.url(history.getLast()) : func();
+        function hasBack(func) {
+            var state = history.getLast();
+            return history.hasHistory() ? $state.go(state.name, state.params) : func();
         }
 
         /**
@@ -54,10 +56,9 @@
          * para navegar lo hace, si no se
          * queda en el molde.
          *
-         * regre
          */
-        function back(){
-            if(history.hasHistory()){
+        function back() {
+            if (history.hasHistory()) {
                 var state = history.getLast();
                 $state.go(state.name, state.params);
             }
@@ -72,7 +73,7 @@
          *
          * @returns {boolean}
          */
-        function isModal(){
+        function isModal() {
             return history.hasHistory();
         }
     }

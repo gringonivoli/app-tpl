@@ -7,17 +7,17 @@
 
     authProvider.$inject = [];
     function authProvider() {
-
+        /* jshint validthis:true */
         var config = {
             stateToRedirect: '',
             warningMsg: '',
             warningTitle: '',
-            urlAuth: 'api/auth'            
+            urlAuth: 'api/auth'
         };
 
         this.configure = function(cfg) {
             angular.extend(config, cfg);
-        }
+        };
 
         this.$get = Auth;
 
@@ -45,9 +45,9 @@
              * acceso por medio de la auth
              * de username y pass.
              *
-             * @param data
-             * @param successCallback
-             * @param errorCallback
+             * @param {Object} data
+             * @param {function} successCallback
+             * @param {function} errorCallback
              */
             function auth(data, successCallback, errorCallback) {
                 $http({
@@ -77,7 +77,7 @@
              *
              * Almacena el token de acceso.
              *
-             * @param token
+             * @param {string} token
              */
             function setAuth(token) {
                 store.set('token', token);
@@ -103,7 +103,7 @@
                     function(event, toState, toParams, fromState, fromParams) {
                         if (toState.access && toState.access.requiredLogin && !getAuth()) {
                             event.preventDefault();
-                            logger.warning(config.warningMsg, config.warningTitle);                            
+                            logger.warning(config.warningMsg, config.warningTitle);
                             $state.go(config.stateToRedirect);
                         }
                     }
