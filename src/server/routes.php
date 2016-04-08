@@ -12,7 +12,7 @@ use Siervo\Response;
 $dev = 'src/client/';
 $pro = 'build/';
 
-$path = $pro; 
+$path = $dev; 
 
 $si = \Siervo\Siervo::getInstance();
 
