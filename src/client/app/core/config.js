@@ -25,14 +25,18 @@
     core.config(configure);
 
     configure.$inject = ['$logProvider', 'routerHelperProvider',
-    'exceptionHandlerProvider', 'authProvider'];
+    'exceptionHandlerProvider', 'authProvider', '$httpProvider',
+    'jwtInterceptorProvider', 'storeProvider'];
     /* @ngInject */
-    function configure($logProvider, routerHelperProvider, exceptionHandlerProvider, authProvider) {
+    function configure($logProvider, routerHelperProvider, exceptionHandlerProvider,
+    authProvider, $httpProvider, jwtInterceptorProvider, storeProvider) {
+
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
         }
 
         configureExceptionHandler();
+        configureStore();
         configureAuth();
         configureRouterHelper();
 
@@ -42,7 +46,20 @@
             exceptionHandlerProvider.configure(config.appErrorPrefix);
         }
 
+        function configureStore() {
+            storeProvider.setStore('sessionStorage');
+        }
+
         function configureAuth() {
+            jwtInterceptorProvider.tokenGetter = forTokenGetter;
+            $httpProvider.interceptors.push('jwtInterceptor');
+
+            forTokenGetter.$inject = ['auth'];
+            /* @ngInject */
+            function forTokenGetter(auth) {
+                return auth.getAuth();
+            }
+
             authProvider.configure({
                 stateToRedirect: config.appStateNoAuth,
                 warningMsg: config.appNoAuthMsg,

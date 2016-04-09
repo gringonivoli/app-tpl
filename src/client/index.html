@@ -35,9 +35,11 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-primary" ui-sref="test">test</button>
-    <button type="button" class="btn btn-primary" ui-sref="param({id: 1})">param</button>
-    <div ui-view>
+    <div class="container-fluid">
+        <button type="button" class="btn btn-primary" ui-sref="test">test</button>
+        <button type="button" class="btn btn-primary" ui-sref="param({id: 1})">param</button>
+        <div ui-view>
+        </div>
     </div>
 
     <!--build:js js/lib.js-->
@@ -87,7 +89,6 @@
     <script src="./src/client/app/test/test.controller.js"></script>
     <script src="./src/client/app/test/test.route.js"></script>
     <script src="./src/client/app/blocks/auth/auth.provider.js"></script>
-    <script src="./src/client/app/blocks/auth/config.js"></script>
     <script src="./src/client/app/blocks/exception/exception-handler.provider.js"></script>
     <script src="./src/client/app/blocks/exception/exception.service.js"></script>
     <script src="./src/client/app/blocks/history/history.service.js"></script>
