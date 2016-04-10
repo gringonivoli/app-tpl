@@ -50,7 +50,8 @@
     },
     "AdminLTE": {
         "main": [
-            "dist/css/AdminLTE.css"            
+            "dist/css/AdminLTE.css",
+            "dist/css/skins/_all-skins.css"            
         ]
     },
     "angular-i18n": {
