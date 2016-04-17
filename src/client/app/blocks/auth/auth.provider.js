@@ -22,6 +22,13 @@
         this.$get = Auth;
 
         Auth.$inject = ['$http', 'store', '$rootScope', '$state', 'logger'];
+        /**
+         * @param  {ng.IHttpService} $http
+         * @param  {any} store
+         * @param  {ng.IRootScopeService} $rootScope
+         * @param  {ng.ui.IStateService} $state
+         * @param  {any} logger
+         */
         function Auth($http, store, $rootScope, $state, logger) {
 
             var service = {
