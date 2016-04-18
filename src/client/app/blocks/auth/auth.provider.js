@@ -57,7 +57,7 @@
              * @param {Object} data
              */
             function auth(data) {
-                $http({
+                return $http({
                     method: 'POST',
                     url: config.urlAuth,
                     skipAuthorization: true,
