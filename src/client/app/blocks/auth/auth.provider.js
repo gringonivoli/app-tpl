@@ -10,9 +10,11 @@
         /* jshint validthis:true */
         var config = {
             stateToRedirect: '',
+            stateAuth: '',
             warningMsg: '',
             warningTitle: '',
-            urlAuth: 'api/auth'
+            urlAuth: 'api/auth',
+            errorAuthMsg: ''
         };
 
         this.configure = function(cfg) {
@@ -53,20 +55,25 @@
              * de username y pass.
              *
              * @param {Object} data
-             * @param {function} successCallback
-             * @param {function} errorCallback
              */
-            function auth(data, successCallback, errorCallback) {
+            function auth(data) {
                 $http({
                     method: 'POST',
                     url: config.urlAuth,
                     skipAuthorization: true,
                     data: data//{username: user, pass: pass}
-                }).then(function(response) {
-                    successCallback(response);
-                }, function(response) {
-                    errorCallback(response);
-                });
+                })
+                .then(successAuth)
+                .catch(failAuth);
+
+                function successAuth(result) {
+                    setAuth(result.data.jwt);
+                    return $state.go(config.stateAuth);
+                }
+
+                function failAuth(result) {
+                    return logger.error(config.errorAuthMsg, result.data, 'Auth Error');
+                }
             }
 
             /**
@@ -75,8 +82,7 @@
              * Borra el token de acceso.
              */
             function logout() {
-                store.remove('token');
-                store.remove('userLogged');
+                return store.remove('token');
             }
 
             /**
