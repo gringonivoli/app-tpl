@@ -82,7 +82,8 @@
              * Borra el token de acceso.
              */
             function logout() {
-                return store.remove('token');
+                store.remove('token');
+                return $state.go(config.stateToRedirect);
             }
 
             /**
