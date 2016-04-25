@@ -45,8 +45,14 @@
          * @param {function} func
          */
         function hasBack(func) {
-            var state = history.getLast();
-            return history.hasHistory() ? $state.go(state.name, state.params) : func();
+            var result;
+            if (history.hasHistory()) {
+                var state = history.getLast();
+                result = $state.go(state.name, state.params)
+            } else {
+                result = func();
+            }
+            return result;
         }
 
         /**
