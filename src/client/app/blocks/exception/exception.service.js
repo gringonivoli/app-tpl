@@ -15,6 +15,7 @@
         function catcher(message) {
             return function(e) {
                 logger.error(message, e);
+                return $q.reject();
             };
         }
     }
