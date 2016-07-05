@@ -1,5 +1,5 @@
 /* Help configure the state-base ui.router */
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -17,14 +17,14 @@
 
         $locationProvider.html5Mode(true);
 
-        this.configure = function(cfg) {
+        this.configure = function (cfg) {
             angular.extend(config, cfg);
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'];
+        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'broadcast'];
         /* @ngInject */
-        function RouterHelper($location, $rootScope, $state, logger) {
+        function RouterHelper($location, $rootScope, $state, logger, broadcast) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -45,7 +45,7 @@
             ///////////////
 
             function configureStates(states, otherwisePath) {
-                states.forEach(function(state) {
+                states.forEach(function (state) {
                     state.config.resolve =
                         angular.extend(state.config.resolve || {}, config.resolveAlways);
                     $stateProvider.state(state.state, state.config);
@@ -61,7 +61,7 @@
                 // On routing error, go to the dashboard.
                 // Provide an exit clause if it tries to do it twice.
                 $rootScope.$on('$stateChangeError',
-                    function(event, toState, toParams, fromState, fromParams, error) {
+                    function (event, toState, toParams, fromState, fromParams, error) {
                         if (handlingStateChangeError) {
                             return;
                         }
@@ -81,18 +81,23 @@
 
             function init() {
                 handleRoutingErrors();
-                updateDocTitle();
+                updateData();
             }
 
             function getStates() { return $state.get(); }
 
-            function updateDocTitle() {
+            function updateDocTitle(stateTitle) {
+                var title = config.docTitle + ' ' + (stateTitle || '');
+                $rootScope.title = title; // data bind to <title>
+            }
+
+            function updateData() {
                 $rootScope.$on('$stateChangeSuccess',
-                    function(event, toState, toParams, fromState, fromParams) {
+                    function (event, toState, toParams, fromState, fromParams) {
                         stateCounts.changes++;
                         handlingStateChangeError = false;
-                        var title = config.docTitle + ' ' + (toState.title || '');
-                        $rootScope.title = title; // data bind to <title>
+                        updateDocTitle(toState.title); // update <title>
+                        broadcast.userLogged(); // emit user logged
                     }
                 );
             }
