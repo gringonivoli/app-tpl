@@ -13,7 +13,7 @@
         vm.cancel = navigationHelper.back;
 
         vm.openChild = function(name, params) {
-            historyStorage.set('login', 'asdf');
+            historyStorage.set('login', {});
             navigationHelper.openChild(name, params);
         };
 

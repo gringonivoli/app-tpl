@@ -22,9 +22,9 @@
         };
 
         this.$get = RouterHelper;
-        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger', 'broadcast'];
+        RouterHelper.$inject = ['$location', '$rootScope', '$state', 'logger'/*, 'broadcast'*/];
         /* @ngInject */
-        function RouterHelper($location, $rootScope, $state, logger, broadcast) {
+        function RouterHelper($location, $rootScope, $state, logger/*, broadcast*/) {
             var handlingStateChangeError = false;
             var hasOtherwise = false;
             var stateCounts = {
@@ -97,7 +97,7 @@
                         stateCounts.changes++;
                         handlingStateChangeError = false;
                         updateDocTitle(toState.title); // update <title>
-                        broadcast.userLogged(); // emit user logged
+                        //broadcast.userLogged(); // emit user logged
                     }
                 );
             }
