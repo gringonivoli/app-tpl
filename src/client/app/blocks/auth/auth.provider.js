@@ -13,6 +13,8 @@
             stateAuth: '',
             warningMsg: '',
             warningTitle: '',
+            expiredMsg: '',
+            expiredTitle: '',
             urlAuth: 'api/auth',
             errorAuthMsg: ''
         };
@@ -23,7 +25,7 @@
 
         this.$get = Auth;
 
-        Auth.$inject = ['$http', 'store', '$rootScope', '$state', 'logger'];
+        Auth.$inject = ['$http', 'store', '$rootScope', '$state', 'logger', 'jwtHelper'];
         /**
          * @param  {ng.IHttpService} $http
          * @param  {any} store
@@ -31,7 +33,7 @@
          * @param  {ng.ui.IStateService} $state
          * @param  {any} logger
          */
-        function Auth($http, store, $rootScope, $state, logger) {
+        function Auth($http, store, $rootScope, $state, logger, jwtHelper) {
 
             var service = {
                 auth: auth,
@@ -109,6 +111,7 @@
 
             function init() {
                 isAuthForRoute();
+                isTokenExpired();
             }
 
             function isAuthForRoute() {
@@ -116,8 +119,24 @@
                     function(event, toState, toParams, fromState, fromParams) {
                         if (toState.access && toState.access.requiredLogin && !getAuth()) {
                             event.preventDefault();
-                            logger.warning(config.warningMsg, config.warningTitle);
+                            logger.warning(config.warningMsg, null, config.warningTitle);
                             $state.go(config.stateToRedirect);
+                        }
+                    }
+                );
+            }
+
+            function isTokenExpired() {
+                $rootScope.$on('$stateChangeSuccess',
+                    function (event, toState, toParams, fromState, fromParams) {
+                        var token = getAuth();
+                        if (token) {
+                            if (jwtHelper.isTokenExpired(token)) {
+                                event.preventDefault();
+                                logger.error(config.expiredMsg, null,
+                                config.expiredTitle);
+                                $state.go(config.stateToRedirect);
+                            }
                         }
                     }
                 );
