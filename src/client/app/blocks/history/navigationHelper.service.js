@@ -48,7 +48,7 @@
             var result;
             if (history.hasHistory()) {
                 var state = history.getLast();
-                result = $state.go(state.name, state.params)
+                result = $state.go(state.name, state.params);
             } else {
                 result = func();
             }
