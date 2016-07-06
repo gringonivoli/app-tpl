@@ -1,12 +1,12 @@
 (function() {
-'use strict';
+    'use strict';
 
-angular
-    .module('app.test')
-    .controller('TestController', TestController);
+    angular
+        .module('app.test')
+        .controller('TestController', TestController);
 
-TestController.$inject = [];
-function TestController() {
+    TestController.$inject = [];
+    function TestController() {
         var vm = this;
 
         activate();
