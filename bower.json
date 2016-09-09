@@ -1,6 +1,6 @@
 {
   "name": "app-tpl",
-  "version": "1.7.0",
+  "version": "0.7.0",
   "description": "Estructura básica para la creación de aplicaciones web basadas en AngularJS.",
   "authors": [
     "Maxi Nivoli <m_nivoli@hotmail.com>"
