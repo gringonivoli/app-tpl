@@ -1,0 +1,214 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                aria-controls="navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="dashboard" da-collapse>
+                <span class="brand-title">{{vm.navline.title}}</span>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <!-- PRODUCTO -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-cubes fa-fw" aria-hidden="true"></i>  Producto
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="newProducto" da-collapse>Productos</a></li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Stock
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newOrdenStockManual" da-collapse>Orden Stock Manual</a></li>
+                                <li ng-if="vm.isEnabled()"><a ui-sref="newCorreccionStock" da-collapse>Corrección Stock</a></li>
+                                <li><a ui-sref="newRemitoInterno" da-collapse>Remito Interno</a></li>
+                                <li><a ui-sref="consultaStock" da-collapse>Consulta</a></li>
+                            </ul>
+                        </li>
+                        <li><a ui-sref="newBarcode" da-collapse>Códigos de Barra</a></li>
+                        <li><a ui-sref="consultaPrecio" da-collapse>Consulta de Precios</a></li>
+                        <li><a href="#" ng-click="vm.getListaPrecios()" da-collapse>Lista de Precios</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Categoría
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newCategoria" da-collapse>Categorías</a></li>
+                                <li><a ui-sref="newSubcategoria" da-collapse>Subcategorías</a></li>
+                            </ul>
+                        </li>
+                        <li><a ui-sref="newMarca" da-collapse>Marcas</a></li>
+                        <li><a ui-sref="newTag" da-collapse>Tags</a></li>
+                    </ul>
+                </li>
+                <!-- CLIENTE -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user fa-fw" aria-hidden="true"></i> Cliente
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="newCliente" option-responsive-menu>Clientes</a></li>
+                        <li><a ui-sref="cuentaCliente" option-responsive-menu>Cuenta</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="exportarEmailClientes" option-responsive-menu>Exportar Emails</a></li>
+                    </ul>
+                </li>
+                <!-- VENTA -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-ticket fa-fw" aria-hidden="true"></i> Venta
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="newFacturaVenta" option-responsive-menu>Factura Venta</a></li>
+                        <li><a ui-sref="newNotaCreditoVenta" option-responsive-menu>Nota de Crédito Venta</a></li>
+                        <li><a ui-sref="newNotaDebitoVenta" option-responsive-menu>Nota de Débito Venta</a></li>
+                        <li><a ui-sref="newReciboPagoVenta" option-responsive-menu>Recibo de Pago</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="newPresupuestoVenta" option-responsive-menu>Presupuesto</a></li>
+                        <!--<li><a href="./historial" option-responsive-menu>Historial</a></li>
+                        <li><a href="./cuenta" option-responsive-menu>Cuenta Corriente</a></li>-->
+                    </ul>
+                </li>
+                <!-- COMPRA -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-shopping-cart fa-fw" aria-hidden="true"></i> Compra
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="newFacturaCompra" option-responsive-menu>Factura Compra</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="newProveedor({tipo: vm.tipoProveedor.productos})" option-responsive-menu>Proveedores</a></li>
+                        <li><a ui-sref="cuentaProveedor({tipo: vm.tipoProveedor.productos})" option-responsive-menu>Cuenta Proveedor</a></li>
+                        <!--<li><a href="./cuenta" option-responsive-menu>Cuenta Corriente</a></li>-->
+                    </ul>
+                </li>
+                <!-- CAJA -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-money fa-fw" aria-hidden="true"></i> Caja y Banco
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Caja
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="libroCaja" da-collapse>Libro Caja</a></li>
+                                <li><a ui-sref="newMovimientoCaja" da-collapse>Movimiento Caja</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ui-sref="newMotivoMovimientoCaja" da-collapse>Motivo Movimiento Caja</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Banco
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newBanco" da-collapse>Banco</a></li>
+                                <li><a ui-sref="newSucursalBanco" da-collapse>Sucursal Banco</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Cheque
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" ng-click="vm.notYet()" da-collapse>Cartera Cheques</a></li>
+                                <li><a ui-sref="newChequeTercero" da-collapse>Registrar Cheque</a></li>
+                                <li><a href="#" ng-click="vm.notYet()" da-collapse>Cobro Cheque</a></li>
+                                <li><a href="#" ng-click="vm.notYet()" da-collapse>Liquidar Cheque</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Tarjeta de Crédito
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="carteraTarjeta" da-collapse>Cartera</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ui-sref="newTarjeta" da-collapse>Tarjetas de Crédito</a></li>
+                                <li><a ui-sref="newPlanTarjeta" da-collapse>Planes</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <!-- GASTOS -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-dollar fa-fw" aria-hidden="true"></i> Gastos
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Gastos Generales
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newGastoGeneral" da-collapse>Gasto General</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ui-sref="newTipoGastoGeneral" da-collapse>Tipo Gasto General</a></li>
+                                <li><a ui-sref="newProveedor({tipo: vm.tipoProveedor.gastosGenerales})" da-collapse>Proveedor Gasto General</a></li>
+                                <li><a ui-sref="cuentaProveedor({tipo: vm.tipoProveedor.gastosGenerales})" option-responsive-menu>Cuenta</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Impuestos
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newImpuesto" da-collapse>Impuesto</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ui-sref="newTipoImpuesto" da-collapse>Tipo Impuesto</a></li>
+                                <li><a ui-sref="newProveedor({tipo: vm.tipoProveedor.impuestos})" da-collapse>Proveedor Impuesto</a></li>
+                                <li><a ui-sref="cuentaProveedor({tipo: vm.tipoProveedor.impuestos})" option-responsive-menu>Cuenta</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-submenu">
+                            <a da-submenu href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Servicios
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="newServicio" da-collapse>Servicio</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ui-sref="newTipoServicio" da-collapse>Tipo Servicio</a></li>
+                                <li><a ui-sref="newProveedor({tipo: vm.tipoProveedor.servicios})" da-collapse>Proveedor Servicio</a></li>
+                                <li><a ui-sref="cuentaProveedor({tipo: vm.tipoProveedor.servicios})" option-responsive-menu>Cuenta</a></li>
+                            </ul>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" ng-click="vm.notYet()" da-collapse>Orden Pago Gasto</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!-- LOGGED USER -->
+                <li da-auth="auth" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user fa-fw" aria-hidden="true"></i> {{vm.user.username}}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-if="vm.isEnabled()"><a ui-sref="perfilAdmin" da-collapse>Mi Perfil</a></li>
+                        <li ng-if="vm.isEnabled()" role="separator" class="divider"></li>
+                        <li ng-if="vm.isEnabled()"><a href="#" ng-click="vm.notYet()" da-collapse>Sucursales</a></li>
+                        <li ng-if="vm.isEnabled()"><a href="#" ng-click="vm.notYet()" da-collapse>Usuarios</a></li>
+                        <li ng-if="vm.isEnabled()" role="separator" class="divider"></li>
+                        <li><a href="#" ui-sref="login" da-collapse>Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

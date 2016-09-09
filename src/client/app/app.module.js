@@ -16,6 +16,10 @@
          */
         'app.core',
         'app.data', // needs core
+        'app.layout',
+        'app.decorators',
+        'app.shared',
+        'app.widgets',
 
         /*
          * Feature areas

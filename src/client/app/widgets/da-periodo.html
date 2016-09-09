@@ -1,0 +1,33 @@
+<div class="col-sm-4">
+    <div class="form-group">
+        <label for="fechaDesde">Desde</label>
+        <p class="input-group">
+            <input type="text" name="fechaDesde" id="fechaDesde"
+                class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.fechaDesde"
+                datepicker-options="vm.fechaDesdeOptions" is-open="vm.popupDesde.opened"
+                current-text="Hoy" clear-text="Borrar"
+                close-text="Cerrar" ng-click="vm.openFechaDesde()" ng-change="vm.updateMinDateFechaHasta()"
+                required>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.openFechaDesde()">
+                    <i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="form-group">
+        <label for="fechaHasta">Hasta</label>
+        <p class="input-group">
+            <input type="text" name="fechaHasta" id="fechaHasta"
+            class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.fechaHasta"
+                datepicker-options="vm.fechaHastaOptions" is-open="vm.popupHasta.opened"
+                current-text="Hoy" clear-text="Borrar"
+                close-text="Cerrar" ng-click="vm.openFechaHasta()" ng-change="vm.updateMaxDateFechaDesde()"
+                required>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.openFechaHasta()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+        </p>
+    </div>
+</div>

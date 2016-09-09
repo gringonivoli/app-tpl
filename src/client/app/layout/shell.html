@@ -1,0 +1,10 @@
+<div ng-controller="ShellController as vm">
+    <header da-auth="auth">
+        <da-top-nav navline="vm.navline" user="vm.user"></da-top-nav>
+        <da-info-bar prefix-out="vm.prefix" page-title="title" sucursal="vm.user.sucursal"></da-info-bar>
+    </header>
+    <div class="container-fluid">
+        <div ui-view>
+        </div>
+    </div>
+</div>

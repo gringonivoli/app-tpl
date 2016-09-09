@@ -27,7 +27,7 @@ gulp.task('optimize', ['inject', 'fonts', 'images'], function () {
                 templateCache,
                 {read: false}
             ),
-            {starttag: '<!-- inject:templates.js -->'}))
+            {starttag: '<!-- inject:templates:js -->'}))
         .pipe($_.useref({searchPath: './'}))
         .pipe(cssFilter)
         .pipe($_.csso())

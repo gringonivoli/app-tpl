@@ -11,7 +11,7 @@
 
         var isPrimed = false;
         var primePromise;
-        var repoNames = [];
+        var repoNames = ['user'];
         var $q = common.$q;
         var logger = common.logger;
 
@@ -70,7 +70,7 @@
 
             function success() {
                 isPrimed = true;
-                logger.info('Primed data');
+                // logger.info('Primed data');
             }
         }
 

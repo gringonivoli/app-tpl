@@ -1,6 +1,6 @@
 {
   "name": "app-tpl",
-  "version": "0.1.0",
+  "version": "1.7.0",
   "description": "Estructura básica para la creación de aplicaciones web basadas en AngularJS.",
   "authors": [
     "Maxi Nivoli <m_nivoli@hotmail.com>"
@@ -19,7 +19,6 @@
     "angular-animate": "^1.5.3",
     "angular-messages": "^1.5.3",
     "angular-sanitize": "^1.5.3",
-    "ui-select": "angular-ui-select#^0.16.1",
     "angular-bootstrap": "^1.2.5",
     "angular-ui-router": "^0.2.18",
     "angular-jwt": "^0.0.9",
@@ -33,7 +32,10 @@
     "angular-cookies": "^1.5.3",
     "AdminLTE": "admin-lte#^2.3.3",
     "angular-i18n": "^1.5.3",
-    "moment-timezone": "^0.5.3"
+    "moment-timezone": "^0.5.3",
+    "angular-ui-mask": "^1.8.3",
+    "angular-ui-select": "^0.18.1",
+    "angular-clipboard": "^1.5.0"
   },
   "overrides": {
     "bootstrap": {

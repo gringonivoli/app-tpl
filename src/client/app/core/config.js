@@ -14,10 +14,15 @@
 
     var config = {
         appErrorPrefix: '[App Error] ',
-        appTitle: 'App',
+        appTitle: 'App-Tpl',
         appStateNoAuth: 'login',
         appNoAuthMsg: 'Ups! Parece que no puedes acceder a esta ruta.',
-        appNoAuthTitle: 'Ruta inaccesible'
+        appNoAuthTitle: 'Ruta inaccesible',
+        appLandingState: 'dashboard',
+        errorAuthMsg: 'Ups! Usuario y/o Password inválidos.',
+        userLoggedStore: 'userLoggedStore',
+        expiredMsg: 'Porfavor inicie sesión nuevamente.',
+        expiredTitle: 'Sesión caducada'
     };
 
     core.value('config', config);
@@ -25,11 +30,11 @@
     core.config(configure);
 
     configure.$inject = ['$logProvider', 'routerHelperProvider',
-    'exceptionHandlerProvider', 'authProvider', '$httpProvider',
-    'jwtInterceptorProvider', 'storeProvider'];
+        'exceptionHandlerProvider', 'authProvider', '$httpProvider',
+        'jwtInterceptorProvider', 'storeProvider'];
     /* @ngInject */
     function configure($logProvider, routerHelperProvider, exceptionHandlerProvider,
-    authProvider, $httpProvider, jwtInterceptorProvider, storeProvider) {
+        authProvider, $httpProvider, jwtInterceptorProvider, storeProvider) {
 
         if ($logProvider.debugEnabled) {
             $logProvider.debugEnabled(true);
@@ -62,8 +67,12 @@
 
             authProvider.configure({
                 stateToRedirect: config.appStateNoAuth,
+                stateAuth: config.appLandingState,
                 warningMsg: config.appNoAuthMsg,
-                warningTitle: config.appNoAuthTitle
+                warningTitle: config.appNoAuthTitle,
+                errorAuthMsg: config.errorAuthMsg,
+                expiredMsg: config.expiredMsg,
+                expiredTitle: config.expiredTitle
             });
         }
 
@@ -72,10 +81,11 @@
                 ready: ready
             };
 
-            ready.$inject = ['datacontext'];
+            ready.$inject = ['$rootScope', 'common', 'datacontext'];
             /* @ngInject */
-            function ready(datacontext) {
-                return datacontext.ready();
+            function ready($rootScope, common, datacontext) {
+                // For prime promise.
+                //return datacontext.ready();
             }
 
             routerHelperProvider.configure({
@@ -84,5 +94,4 @@
             });
         }
     }
-
 })();

@@ -1,0 +1,7 @@
+<tr>
+    <th ng-repeat="field in vm.fields" ng-click="vm.sort(field)">
+        {{field | labelCase}}
+        <span ng-show="vm.isSortedField(field) && vm.sort.field === field && !vm.sort.order" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="vm.isSortedField(field) && vm.sort.field === field && vm.sort.order" class="glyphicon glyphicon-chevron-up"></span>
+    </th>
+</tr>

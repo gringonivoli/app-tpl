@@ -1,1 +1,95 @@
-/**/
+@bg-color: #D2D6DE;
+@light-green: #00FF00;
+
+/* Mixin */
+.transition (@prop: all, @time: 1s, @ease: linear) {
+	-webkit-transition: @prop @time @ease;
+	-moz-transition: @prop @time @ease;
+	-o-transition: @prop @time @ease;
+	-ms-transition: @prop @time @ease;
+	transition: @prop @time @ease;
+}
+
+.has-error-add, .has-error-remove,
+.has-success-add, .has-success-remove{
+    .transition(all, 1.3s, linear);
+}
+
+body{
+    background-color: @bg-color;
+    padding-top: 120px;
+}
+
+.text-light-green{
+    color: @light-green;
+}
+
+.da-info-bar{
+    position: fixed;
+    top: 51px;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 3px 6px 4px 0;
+}
+
+.login-box{
+    margin-top: -45px;
+}
+
+/* XS input for detalles ficha */
+.input-xs{
+    width: 80px !important;
+    margin-right: 20px;
+}
+
+.detail{
+    vertical-align: sub !important;
+}
+
+/*/ customAlert */
+.alert.customAlert{
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 9999;
+}
+
+.customAlert strong {
+    display: block;
+}
+
+.customAlert .close {
+    position: absolute !important;
+    right: 15px !important;
+    top: 10px !important;
+}
+
+.marginBottom-0 {margin-bottom:0;}
+
+.big-text-select{
+    font-size: 18px;
+}
+
+/* DROPDOWN NAVBAR SUBMENU */
+.dropdown-submenu{position:relative;}
+.dropdown-submenu>.dropdown-menu{top:0;left:100%;margin-top:-6px;margin-left:-1px;-webkit-border-radius:0 6px 6px 6px;-moz-border-radius:0 6px 6px 6px;border-radius:0 6px 6px 6px;}
+.dropdown-submenu>a:after{display:block;content:" ";float:right;width:0;height:0;border-color:transparent;border-style:solid;border-width:5px 0 5px 5px;border-left-color:#cccccc;margin-top:5px;margin-right:-10px;}
+.dropdown-submenu:hover>a:after{border-left-color:#555;}
+.dropdown-submenu.pull-left{float:none;}.dropdown-submenu.pull-left>.dropdown-menu{left:-100%;margin-left:10px;-webkit-border-radius:6px 0 6px 6px;-moz-border-radius:6px 0 6px 6px;border-radius:6px 0 6px 6px;}
+
+/* Hack para el ui select */
+.ui-select-match-text > span {
+    width: 80%; /* es lo que mas o menos queda */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+}
+
+.ui-select-bootstrap .ui-select-choices-row>a{
+    white-space: normal;
+}
+
+.ui-select-multiple.ui-select-bootstrap{
+    height: 34px;
+}

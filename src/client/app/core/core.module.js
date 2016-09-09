@@ -8,9 +8,10 @@
         'blocks.auth',
         'blocks.history',
 
-        'ui.router',
+        'ui.router', 'ui.mask',
         'angular-storage',
         'angular-jwt', 'angular-loading-bar', 'ui.select',
-        'ui.bootstrap', 'angularUtils.directives.dirPagination'
+        'ui.bootstrap', 'angularUtils.directives.dirPagination',
+        'angular-clipboard'
     ]);
 })();

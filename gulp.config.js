@@ -47,7 +47,7 @@ module.exports = function () {
             options: {
                 module: 'app.core',
                 standAlone: false,
-                root: 'app/'
+                root: 'src/client/app/'
             }
         },
 

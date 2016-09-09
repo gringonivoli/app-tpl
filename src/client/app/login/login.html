@@ -1,3 +1,54 @@
-<h1>Login</h1>
-<button type="button" class="btn btn-success" ng-click="vm.openChild('param', {id: 1})">Open Modal</button>
-<button type="button" class="btn btn-success" ng-click="vm.cancel()">Volver</button>
+<div class="login-box">
+    <div class="login-logo">
+        <a href=""><img src="src/client/images/defaultLogo2.png" class="img-responsive" alt="logo"></a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Inicio de Sesión</p>
+
+        <form name="vm.loginForm" novalidate>
+            <div class="form-group has-feedback" ng-class="vm.validate.element(vm.loginForm.username)">
+                <input type="text" ng-model="vm.user.username" name="username" class="form-control" placeholder="Usuario" ng-minlength="3"
+                    ng-maxlength="40" required autofocus>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <da-error-block element="vm.loginForm.username">
+                    <p ng-message="required">
+                        El campo nombre de usuario es obligatorio!
+                    </p>
+                    <p ng-message="minlength">
+                        La cantidad de caracteres m&iacute;nima es 3!
+                    </p>
+                    <p ng-message="maxlength">
+                        La cantidad de caracteres m&aacute;xima es 40!
+                    </p>
+                </da-error-block>
+            </div>
+            <div class="form-group has-feedback" ng-class="vm.validate.element(vm.loginForm.pass)">
+                <input type="password" ng-model="vm.user.pass" class="form-control" placeholder="Password" name="pass" ng-minlength="5" ng-maxlength="12"
+                    required>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <da-error-block element="vm.loginForm.pass">
+                    <p ng-message="required">
+                        El campo password es obligatorio!
+                    </p>
+                    <p ng-message="minlength">
+                        La cantidad de caracteres m&iacute;nima es 5!
+                    </p>
+                    <p ng-message="maxlength">
+                        La cantidad de caracteres m&aacute;xima es 12!
+                    </p>
+                </da-error-block>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit" class="btn btn-primary btn-flat pull-right" ng-click="vm.auth()">Iniciar sesión</button>
+                </div>
+            </div>
+        </form>
+
+        <!--a href="#">I forgot my password</a><br>
+        <a href="register.html" class="text-center">Register a new membership</a-->
+
+    </div>
+    <!-- /.login-box-body -->
+</div>

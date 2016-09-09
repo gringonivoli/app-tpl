@@ -1,0 +1,17 @@
+<div class="form-group" ng-class="vm.validate.element(vm.form.fecha)">
+    <label for="fecha">{{vm.label}}</label>
+    <p class="input-group">
+        <input type="text" name="fecha" id="fecha" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.fecha"
+            datepicker-options="vm.fechaOptions" is-open="vm.popup.opened" current-text="Hoy" clear-text="Borrar" close-text="Cerrar"
+            ng-click="vm.openFecha()" required>
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.openFecha()">
+                <i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+    </p>
+    <da-error-block element="vm.form.fecha">
+        <p ng-message="required">
+            El campo es obligatorio!
+        </p>
+    </da-error-block>
+</div>

@@ -1,11 +1,16 @@
 /vendor/autoload.php
+/vendor/Misc-master
+/vendor/siervo
 /.idea
 /.vscode
 /vendor/fpdf181
 /vendor/vrana
 /vendor/firebase
+/vendor/barcode
 /bower_components
+/bower_components.*
 /node_modules
 /.tmp
 /build
 /typings
+/npm-debug.*
