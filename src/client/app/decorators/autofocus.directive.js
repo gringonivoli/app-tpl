@@ -13,11 +13,13 @@
         };
 
         function link(scope, element, attrs) {
-            $timeout(
-                function () {
-                    element[0].focus();
-                }, 100
-            );
+            if (attrs.autofocus !== false) {
+                $timeout(
+                    function () {
+                        element[0].focus();
+                    }, 100
+                );
+            }
         }
     }
 })();
