@@ -13,7 +13,8 @@
         var service = {
             set: set,
             get: get,
-            remove: remove
+            remove: remove,
+            init: init
         };
 
         init();
