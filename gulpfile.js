@@ -3,15 +3,28 @@ var gulp = require('gulp');
 var args = require('yargs').argv;
 var del = require('del');
 var config = require('./gulp.config')();
-
+var path = require('path');
+var _ = require('lodash');
 var $_ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('help', $_.taskListing);
 gulp.task('default', ['help']);
 
-// PRINCIPAL
+gulp.task('build', ['optimize', 'images', 'fonts'], function () {
+    log('Building everything');
+
+    var msg = {
+        title: 'Gulp Build',
+        subtitle: 'Deployed to the build folder',
+        message: 'Done!'
+    };
+    //del(config.temp);
+    log(msg);
+    notify(msg);
+});
+
 /* Concatena todos los js y css, los injecta en el index.html y lo vuelca en build */
-gulp.task('optimize', ['inject', 'fonts', 'images'], function () {
+gulp.task('optimize', ['inject', 'test'], function () {
     log('Optimizing the javascript, css, html');
 
     var templateCache = config.temp + config.templateCache.file;
@@ -206,7 +219,38 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
         .pipe(gulp.dest(config.client));
 });
 
+gulp.task('test', ['vet', 'templatecache'], function (done) {
+    startTests(true /* single Run */, done);
+});
+
+gulp.task('autotest', ['vet', 'templatecache'], function (done) {
+    startTests(false /* single Run */, done);
+});
+
 ////////////////////
+
+function startTests(singleRun, done) {
+    var Karma = require('karma').Server;
+    var excludeFiles = [];
+    var serverSpecs = config.serverIntegrationSpecs;
+
+    excludeFiles = serverSpecs;
+
+    new Karma({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: !!singleRun
+    }, karmaCompleted).start();
+
+    function karmaCompleted(karmaResult) {
+        log('Karma completed!');
+        if (karmaResult === 1) {
+            done('karma: tests failed with code ' + karmaResult);
+        } else {
+            done();
+        }
+    }
+}
 
 function clean(path) {
     log('Cleaning: ' + $_.util.colors.blue(path));
@@ -223,4 +267,18 @@ function log(msg) {
     } else {
         $_.util.log($_.util.colors.blue(msg));
     }
+}
+
+/**
+ * Show OS level notification using node-notifier
+ */
+function notify(options) {
+    var notifier = require('node-notifier');
+    var notifyOptions = {
+        sound: 'Bottle',
+        contentImage: path.join(__dirname, 'gulpColor.png'),
+        icon: path.join(__dirname, 'gulpColor.png')
+    };
+    _.assign(notifyOptions, options);
+    notifier.notify(notifyOptions);
 }

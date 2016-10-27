@@ -18,6 +18,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "chai": "^3.5.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
@@ -53,8 +54,10 @@
     "karma-mocha": "^1.2.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-sinon": "^1.0.5",
+    "lodash": "^4.16.4",
     "mocha": "^3.1.2",
     "mocha-clean": "^1.0.0",
+    "node-notifier": "^4.6.1",
     "phantomjs": "^2.1.7",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",

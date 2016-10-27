@@ -12,6 +12,11 @@
     "node_modules",
     "bower_components"
   ],
+  "devDependencies": {
+    "angular-mocks": "^1.5.3",
+    "sinon": "http://sinonjs.org/releases/sinon-1.12.1.js",
+    "bardjs": "latest"
+  },
   "dependencies": {
     "jquery": "^2.2.2",
     "bootstrap": "^3.3.6",
