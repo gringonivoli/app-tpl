@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <title>Spec Runner</title>
+
+  <style>
+    body {
+      font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      padding-left: 20px;
+    }
+  </style>
+
+  <!--BEWARE of using any app styles as @media can screw up tests -->
+
+  <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+
+</head>
+
+<body>
+
+  <h1><a href="specs.html">Spec Runner</a></h1>
+  <p><strong>Make sure the REMOTE server is running</strong>
+    <br/> Click on a <em>description title</em> to narrow the scope to just its specs (see "<a href="http://mochajs.github.io/mocha/#grep-option"
+    target="_blank" title="MochaJS grep option">
+        ?grep</a>" in address bar).
+    <br/> Click on a <em>spec title</em> to see the test implementation.
+    <br/> Click on <em>page title</em> to start over.
+  </p>
+
+  <div id="mocha"></div>
+
+  <!-- inject:testlibraries:js -->
+  <script src="/node_modules/mocha/mocha.js"></script>
+  <script src="/node_modules/chai/chai.js"></script>
+  <script src="/node_modules/sinon-chai/lib/sinon-chai.js"></script>
+  <!-- endinject -->
+
+  <script>
+    expect = chai.expect;
+        AssertionError = chai.AssertionError;
+        mocha.setup('bdd');
+        mocha.traceIgnores = ['mocha.js', 'chai.js', 'angular.js'];
+  </script>
+
+  <!-- bower:js -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-messages/angular-messages.js"></script>
+  <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
+  <script src="/bower_components/angular-loading-bar/build/loading-bar.js"></script>
+  <script src="/bower_components/a0-angular-storage/dist/angular-storage.js"></script>
+  <script src="/bower_components/angularUtils-pagination/dirPagination.js"></script>
+  <script src="/bower_components/toastr/toastr.js"></script>
+  <script src="/bower_components/moment/moment.js"></script>
+  <script src="/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="/bower_components/angular-i18n/angular-locale_es-ar.js"></script>
+  <script src="/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+  <script src="/bower_components/angular-ui-mask/dist/mask.js"></script>
+  <script src="/bower_components/angular-ui-select/dist/select.js"></script>
+  <script src="/bower_components/angular-clipboard/angular-clipboard.js"></script>
+  <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
+  <script src="/bower_components/sinon/index.js"></script>
+  <script src="/bower_components/bardjs/dist/bard.js"></script>
+  <script src="/bower_components/bardjs/dist/bard-ngRouteTester.js"></script>
+  <!-- endbower -->
+
+  <!-- inject:js -->
+  <script src="/src/client/app/app.module.js"></script>
+  <script src="/src/client/app/core/core.module.js"></script>
+  <script src="/src/client/app/data/data.module.js"></script>
+  <script src="/src/client/app/decorators/decorators.module.js"></script>
+  <script src="/src/client/app/layout/layout.module.js"></script>
+  <script src="/src/client/app/login/login.module.js"></script>
+  <script src="/src/client/app/param/param.module.js"></script>
+  <script src="/src/client/app/shared/shared.module.js"></script>
+  <script src="/src/client/app/test/test.module.js"></script>
+  <script src="/src/client/app/widgets/widgets.module.js"></script>
+  <script src="/src/client/app/blocks/auth/auth.module.js"></script>
+  <script src="/src/client/app/blocks/exception/exception.module.js"></script>
+  <script src="/src/client/app/blocks/history/history.module.js"></script>
+  <script src="/src/client/app/blocks/logger/logger.module.js"></script>
+  <script src="/src/client/app/blocks/router/router.module.js"></script>
+  <script src="/src/client/app/core/common.js"></script>
+  <script src="/src/client/app/core/config.js"></script>
+  <script src="/src/client/app/core/constants.js"></script>
+  <script src="/src/client/app/data/datacontext.js"></script>
+  <script src="/src/client/app/data/repository.user.js"></script>
+  <script src="/src/client/app/decorators/autofocus.directive.js"></script>
+  <script src="/src/client/app/decorators/click-and-disable.directive.js"></script>
+  <script src="/src/client/app/decorators/da-auth.directive.js"></script>
+  <script src="/src/client/app/decorators/string-to-number.directive.js"></script>
+  <script src="/src/client/app/layout/da-collapse.directive.js"></script>
+  <script src="/src/client/app/layout/da-submenu.directive.js"></script>
+  <script src="/src/client/app/layout/da-top-nav.directive.js"></script>
+  <script src="/src/client/app/layout/shell.controller.js"></script>
+  <script src="/src/client/app/login/login.controller.js"></script>
+  <script src="/src/client/app/login/login.route.js"></script>
+  <script src="/src/client/app/param/param.controller.js"></script>
+  <script src="/src/client/app/param/param.route.js"></script>
+  <script src="/src/client/app/shared/broadcast.service.js"></script>
+  <script src="/src/client/app/shared/constants.js"></script>
+  <script src="/src/client/app/shared/custom-currency.filter.js"></script>
+  <script src="/src/client/app/shared/date.service.js"></script>
+  <script src="/src/client/app/shared/dict.filter.js"></script>
+  <script src="/src/client/app/shared/label-case.filter.js"></script>
+  <script src="/src/client/app/shared/pdf-helper.service.js"></script>
+  <script src="/src/client/app/shared/text-format.service.js"></script>
+  <script src="/src/client/app/shared/uid.service.js"></script>
+  <script src="/src/client/app/shared/validate.service.js"></script>
+  <script src="/src/client/app/test/test.controller.js"></script>
+  <script src="/src/client/app/test/test.route.js"></script>
+  <script src="/src/client/app/widgets/da-basic-window.directive.js"></script>
+  <script src="/src/client/app/widgets/da-error-block.directive.js"></script>
+  <script src="/src/client/app/widgets/da-fecha.directive.js"></script>
+  <script src="/src/client/app/widgets/da-head-table.directive.js"></script>
+  <script src="/src/client/app/widgets/da-info-bar.directive.js"></script>
+  <script src="/src/client/app/widgets/da-list-window.directive.js"></script>
+  <script src="/src/client/app/widgets/da-new-window.directive.js"></script>
+  <script src="/src/client/app/widgets/da-periodod.directive.js"></script>
+  <script src="/src/client/app/widgets/da-search-window.directive.js"></script>
+  <script src="/src/client/app/widgets/da-searchbox.directive.js"></script>
+  <script src="/src/client/app/widgets/da-single-window.directive.js"></script>
+  <script src="/src/client/app/blocks/auth/auth.provider.js"></script>
+  <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
+  <script src="/src/client/app/blocks/exception/exception.service.js"></script>
+  <script src="/src/client/app/blocks/history/history.service.js"></script>
+  <script src="/src/client/app/blocks/history/historyStorage.service.js"></script>
+  <script src="/src/client/app/blocks/history/navigationHelper.service.js"></script>
+  <script src="/src/client/app/blocks/logger/logger.service.js"></script>
+  <script src="/src/client/app/blocks/router/router-helper.provider.js"></script>
+  <script src="/src/client/app/data/repositories/repository.user.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-cancel-button.directive.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-delete-button.directive.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-new-button.directive.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-print-button.directive.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-save-button.directive.js"></script>
+  <script src="/src/client/app/widgets/buttons/da-search-button.directive.js"></script>
+  <!-- endinject -->
+
+  <!-- inject:spechelpers:js -->
+  <!-- endinject -->
+
+  <!-- inject:specs:js -->
+  <script src="/src/client/app/login/login.controller.spec.js"></script>
+  <!-- endinject -->
+
+  <!-- inject:templates:js -->
+  <script src="/.tmp/templates.js"></script>
+  <!-- endinject -->
+
+  <script>
+    mocha.run();
+  </script>
+
+</body>
+
+</html>
