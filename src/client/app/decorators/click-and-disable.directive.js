@@ -24,9 +24,14 @@
             element.bind('click', function() {
                 var prom = scope.clickAndDisable();
                 if (prom) {
-                    element.prop('disabled',true);
+                    element.prop('disabled', true);
+                    var defaultIcon = element.children('.fa');
+                    defaultIcon.hide();
+                    element.prepend('<i class="fa fa-spinner fa-pulse fa-fw waitXHR"></i>');
                     prom.finally(function() {
-                        element.prop('disabled',false);
+                        element.prop('disabled', false);
+                        element[0].querySelector('.waitXHR').remove();
+                        defaultIcon.show();
                     });
                 }
             });
