@@ -4,7 +4,8 @@
             <h1>
                 {{vm.title}}
                 <div class="pull-right">
-                    <da-new-button state="vm.newi"></da-new-button>
+                    <link-button ng-if="vm.search" state="{{vm.search}}" label="Búsqueda" icon="fa-search"></link-button>
+                    <link-button ng-if="vm.newi" state="{{vm.newi}}" label="Nuevo" icon="fa-plus" color="btn-success"></link-button>
                 </div>
             </h1>
         </section>
