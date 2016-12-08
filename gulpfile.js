@@ -410,7 +410,7 @@ function startBrowserSync(isDev, specRunner) {
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'info',
-        logPrefix: 'hottowel',
+        logPrefix: 'app-tpl',
         notify: true,
         reloadDelay: 0 //1000
     };
