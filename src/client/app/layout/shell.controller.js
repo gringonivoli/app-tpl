@@ -5,8 +5,8 @@
         .module('app.layout')
         .controller('ShellController', ShellController);
 
-    ShellController.$inject = ['$scope', 'config'];
-    function ShellController($scope, config) {
+    ShellController.$inject = ['$scope', 'config', 'datacontext'];
+    function ShellController($scope, config, datacontext) {
 
         var vm = this;
         vm.user = {};
@@ -24,6 +24,7 @@
         }
 
         function setUser() {
+            vm.user = datacontext.user.getUserLogged();
             $scope.$on('userLogged', function (event, user) {
                 vm.user = user;
             });
