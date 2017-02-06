@@ -17,9 +17,7 @@
                 state: 'login',
                 config: {
                     url: '/',
-                    templateUrl: 'src/client/app/login/login.html',
-                    controller: 'LoginController',
-                    controllerAs: 'vm',
+                    template: '<login></login>',
                     title: 'Login',
                     resolve: {
                         /* @ngInject */

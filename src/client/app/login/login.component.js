@@ -1,23 +1,33 @@
-(function () {
-    'use strict';
+(function() {
+'use strict';
+
+    // Usage:
+    //
+    // Creates:
+    //
 
     angular
         .module('app.login')
-        .controller('LoginController', LoginController);
+        .component('login', {
+            templateUrl: 'src/client/app/login/login.component.html',
+            controller: LoginController,
+            controllerAs: 'vm',
+            bindings: {}
+        });
 
     LoginController.$inject = ['auth', 'validateService', 'datacontext', 'broadcast'];
     function LoginController(auth, validateService, datacontext, broadcast) {
 
         var vm = this;
+
         vm.validate = validateService;
         vm.auth = authenticate;
 
-        activate();
-
         ////////////////
 
-        function activate() {
-        }
+        vm.$onInit = function() { };
+        vm.$onChanges = function(changesObj) { };
+        vm.$onDestory = function() { };
 
         function authenticate() {
             if (vm.validate.form(vm.loginForm)) {
