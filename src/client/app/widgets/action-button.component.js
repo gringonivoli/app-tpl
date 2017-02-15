@@ -24,13 +24,11 @@
     function ActionButtonController($timeout) {
 
         var vm = this;
+        vm.click = vm.action;
 
         ////////////////
 
         vm.$onInit = function() {
-            vm.click = function () {
-                $timeout(vm.action, 0);
-            };
             vm.color = vm.color || 'btn-primary';
         };
         vm.$onChanges = function(changesObj) { };
