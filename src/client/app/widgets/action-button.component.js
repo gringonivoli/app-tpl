@@ -20,8 +20,8 @@
             },
         });
 
-    ActionButtonController.$inject = ['$timeout'];
-    function ActionButtonController($timeout) {
+    ActionButtonController.$inject = [];
+    function ActionButtonController() {
 
         var vm = this;
         vm.click = vm.action;
