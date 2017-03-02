@@ -64,9 +64,12 @@
         }
 
         function detail(detail) {
-            if (angular.isArray(detail) || (detail.length === 0)) {
+            var isOk = true;
+            if (angular.isArray(detail) && (detail.length === 0)) {
+                isOk = false;
                 showError('Formulario Inválido', 'Los detalles parecen estar vacíos!');
             }
+            return isOk;
         }
 
         function showError(title, msg) {
